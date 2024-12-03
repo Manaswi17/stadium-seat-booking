@@ -1,41 +1,49 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import BookingPage from './pages/BookingPage';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import EntryPage from './pages/EntryPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import { AuthProvider } from './pages/AuthContext';
+import HomePage from './pages/HomePage';
+import EventDetailsPage from './pages/EventDetailsPAge';
+import SeatSelectionPage from './pages/SeatSelectionPage';
+import BookingConfirmationPage from './pages/BookingConfirmationPage';
+import MyBookingsPage from './pages/MyBookingsPage ';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track user authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Simulate login
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isAuthenticated') === 'true';
+    setIsAuthenticated(loggedIn);
+  }, []);
+
   const handleLogin = () => {
     setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true');
   };
 
-  // Simulate logout
   const handleLogout = () => {
     setIsAuthenticated(false);
+    localStorage.removeItem('isAuthenticated');
   };
 
   return (
+    <AuthProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        
-        {/* If not authenticated, redirect to login */}
-        <Route
-          path="/booking"
-          element={
-            isAuthenticated ? <BookingPage /> : <Navigate to="/login" />
-          }
-        />
-        
-        {/* Login and Sign-Up Pages */}
+        <Route path="/" element={<EntryPage />} />  {/* Show splash screen */}
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
-        <Route path="/signup" element={<SignUpPage onSignUp={handleLogin} />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/home" element={isAuthenticated ? <HomePage onLogout={handleLogout} /> : <Navigate to="/login" />} />
+        {/* <Route path="*" element={<Navigate to="/" />} />  Redirect any invalid route to splash screen */}
+        <Route path="/events/:eventId" element={<EventDetailsPage />} /> 
+        <Route path="/events/:eventId/seat-selection" element={<SeatSelectionPage />} />
+        <Route path="/events/:eventId/booking-confirmation" element={<BookingConfirmationPage />} />
+        <Route path="/my-bookings" element={<MyBookingsPage/>} />
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 

@@ -1,19 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:'); // You can connect to an external file instead of in-memory
-
-db.serialize(() => {
-  db.run(`
-    CREATE TABLE IF NOT EXISTS seats (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      seat_number TEXT NOT NULL,
-      is_booked BOOLEAN NOT NULL DEFAULT 0
-    )
-  `);
-
-  // Initialize seats
-  for (let i = 1; i <= 100; i++) {
-    db.run(`INSERT INTO seats (seat_number, is_booked) VALUES (?, ?)`, [`A${i}`, false]);
-  }
+const { Pool } = require('pg');
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'postgres',
+  password: 'pass@123',
+  port: 5432,
 });
+// Test database connection (in db.js or server.js)
+pool.connect()
+  .then(client => {
+    console.log('Connected to the database');
+    client.release();
+  })
+  .catch(err => {
+    console.error('Database connection error', err.stack);
+  });
 
-module.exports = db;
+module.exports = pool;

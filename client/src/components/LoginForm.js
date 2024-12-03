@@ -17,7 +17,7 @@ function LoginForm({ onSubmit }) {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="you@example.com"
           required
         />
@@ -28,14 +28,14 @@ function LoginForm({ onSubmit }) {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="Enter your password"
           required
         />
       </div>
       <button
         type="submit"
-        className="w-full py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded shadow-md hover:from-blue-600 hover:to-green-500"
+        className="w-full py-3 bg-blue-500 text-white font-semibold rounded shadow-md"
       >
         Log In
       </button>

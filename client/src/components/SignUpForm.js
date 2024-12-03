@@ -9,11 +9,7 @@ function SignUpForm({ onSubmit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    onSubmit({ name, email, phone, password });
+    onSubmit({ name, email, phone, password, confirmPassword });
   };
 
   return (
@@ -24,7 +20,7 @@ function SignUpForm({ onSubmit }) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="Your Name"
           required
         />
@@ -35,7 +31,7 @@ function SignUpForm({ onSubmit }) {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="you@example.com"
           required
         />
@@ -46,7 +42,7 @@ function SignUpForm({ onSubmit }) {
           type="tel"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="Your Phone Number"
           required
         />
@@ -57,7 +53,7 @@ function SignUpForm({ onSubmit }) {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="Create a password"
           required
         />
@@ -68,14 +64,14 @@ function SignUpForm({ onSubmit }) {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          className="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+          className="w-full p-3 border border-gray-300 rounded shadow-sm"
           placeholder="Confirm your password"
           required
         />
       </div>
       <button
         type="submit"
-        className="w-full py-3 bg-gradient-to-r from-green-400 to-blue-500  text-white font-semibold rounded shadow-md hover:from-blue-600 hover:to-green-500"
+        className="w-full py-3 bg-green-500 text-white font-semibold rounded shadow-md"
       >
         Sign Up
       </button>
