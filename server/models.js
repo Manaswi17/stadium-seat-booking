@@ -56,7 +56,12 @@ const getEventDetails = async (eventId) => {
 // Get booked seats count for a specific event
 const getBookedSeats = async (eventId) => {
   try {
-    const result = await pool.query('SELECT COUNT(*) AS bookedSeats FROM bookings WHERE event_id = $1', [eventId]);
+    const query = `
+      SELECT COUNT(*) AS bookedSeats 
+      FROM bookings 
+      WHERE event_id = $1 AND status = 'booked'
+    `;
+    const result = await pool.query(query, [eventId]);
     return parseInt(result.rows[0].bookedseats, 10); // Ensure it's returned as a number
   } catch (error) {
     throw error;

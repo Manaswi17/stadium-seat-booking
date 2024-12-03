@@ -259,7 +259,7 @@ function HomePage({ onLogout }) {
     {
       id: 1,
       imgSrc:
-        "https://cdn.vectorstock.com/i/500p/60/20/soccer-bannertemplate-football-banner-vs-vector-53656020.jpg",
+        "https://as1.ftcdn.net/v2/jpg/02/08/94/26/1000_F_208942624_dgTMHz3zixodsZkVcvpM6OyhzfYKwwOQ.jpg",
       alt: "Event 1",
     },
     {
@@ -365,7 +365,7 @@ function HomePage({ onLogout }) {
       </div>
 
       {/* Sliding Banner */}
-      <div className="relative w-full h-64 overflow-hidden rounded-lg shadow-md mb-8">
+      <div className="relative w-full h-[400px] overflow-hidden rounded-lg shadow-md mb-8">
         <div
           className="flex transition-transform duration-700 ease-in-out"
           style={{
@@ -382,7 +382,7 @@ function HomePage({ onLogout }) {
               <img
                 src={slide.imgSrc}
                 alt={slide.alt}
-                className="w-full h-full object-cover bg-black" // Ensure full coverage of the banner
+                className="w-full h-full object-contain bg-black"
               />
             </div>
           ))}
@@ -393,7 +393,7 @@ function HomePage({ onLogout }) {
           {topSuggestions.map((_, index) => (
             <button
               key={index}
-              className={`w-3 h-3 rounded-full ${
+              className={`w-4 h-4 rounded-full ${
                 currentSlide === index ? "bg-white" : "bg-gray-500"
               }`}
               onClick={() => setCurrentSlide(index)}
