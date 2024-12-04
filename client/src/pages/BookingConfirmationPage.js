@@ -40,11 +40,6 @@ function BookingConfirmationPage() {
       });
       alert("Booking confirmed!");
       navigate(`/my-bookings`, {
-        // state: {
-        //   eventDetails,
-        //   seatDetails: { seatId }, // Pass seat details
-        //   userDetails: { email: userEmail }, // Pass user details
-        // },
       });
     } catch (err) {
       console.error("Error confirming booking:", err);

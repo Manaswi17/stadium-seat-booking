@@ -152,12 +152,12 @@ const createBooking = async (eventId, seatId, email) => {
     }
 
     const insertBookingQuery = `
-      INSERT INTO bookings (event_id, seat_id, cust_id, status)
-      VALUES ($1, $2, $3, 'booked')
+      INSERT INTO bookings (event_id, seat_id, cust_id, status,created_by)
+      VALUES ($1, $2, $3, 'booked',$4)
       RETURNING *
     `;
-    const result = await client.query(insertBookingQuery, [eventId, seatId, cust_id]);
-
+    const result = await client.query(insertBookingQuery, [eventId, seatId, cust_id,email]);
+    
     await client.query('COMMIT');
     return result.rows[0];
   } catch (err) {

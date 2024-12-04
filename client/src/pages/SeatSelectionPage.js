@@ -65,14 +65,15 @@ function SeatSelectionPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center p-8"
+      className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center p-8"
       style={{
-        backgroundImage: `url(https://st.depositphotos.com/1010683/3138/i/450/depositphotos_31388665-stock-photo-blue-plastic-old-stadium-seats.jpg)`,
+        backgroundImage: `url(https://media.istockphoto.com/id/612852170/photo/stadium-grass.jpg?s=612x612&w=0&k=20&c=i89QruQuoCcUCz4Ab1WJ6KVZFp5yG3-3QrWkp83DQlg=)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}
     >
-      <div className="max-w-lg mx-auto bg-white/80 backdrop-blur-md p-8 rounded-lg shadow-md">
+      {/* Seat Selection Card */}
+      <div className="max-w-lg bg-white/80 backdrop-blur-md p-8 rounded-lg shadow-md mb-8">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
           Seat Selection <p>{eventName}</p>
         </h2>
@@ -118,6 +119,15 @@ function SeatSelectionPage() {
             Confirm Selection
           </button>
         </div>
+      </div>
+
+      {/* Image */}
+      <div className="max-w-lg">
+        <img
+          src="/Stadium.png" // Use your image from the public folder
+          alt="Stadium"
+          className="rounded-lg shadow-md"
+        />
       </div>
     </div>
   );

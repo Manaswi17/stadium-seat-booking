@@ -115,7 +115,7 @@ function Mybookings() {
           onClick={() => navigate("/home")}
           className="absolute top-4 left-4 px-4 py-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
         >
-          Home
+          Back
         </button>
 
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-6">
