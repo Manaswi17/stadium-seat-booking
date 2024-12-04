@@ -14,30 +14,10 @@ function HomePage({ onLogout }) {
 
   // Top Suggestions Array for Sliding Banner
   const topSuggestions = [
-    {
-      id: 1,
-      imgSrc:
-        "https://as1.ftcdn.net/v2/jpg/02/08/94/26/1000_F_208942624_dgTMHz3zixodsZkVcvpM6OyhzfYKwwOQ.jpg",
-      alt: "Event 1",
-    },
-    {
-      id: 2,
-      imgSrc:
-        "https://www.vip-bet.com/wp-content/uploads/2016/06/Ladbrokes-775x258-banner.jpg",
-      alt: "Event 2",
-    },
-    {
-      id: 3,
-      imgSrc:
-        "https://www.thatsagoal.com/wp-content/uploads/2022/05/Ladbrokes-acca.jpg",
-      alt: "Event 3",
-    },
-    {
-      id: 4,
-      imgSrc:
-        "https://img.freepik.com/free-vector/gradient-football-twitch-banner-template_23-2149878392.jpg",
-      alt: "Event 4",
-    },
+    { id: 1, imgSrc: "/banners/banner1.jpg", alt: "Event 1" },
+    { id: 2, imgSrc: "/banners/banner2.jpg", alt: "Event 2" },
+    { id: 3, imgSrc: "/banners/banner3.jpg", alt: "Event 3" },
+    { id: 4, imgSrc: "/banners/banner4.jpg", alt: "Event 4" },
   ];
 
   // Automatic sliding effect for the banner
@@ -123,9 +103,10 @@ function HomePage({ onLogout }) {
       </div>
 
       {/* Sliding Banner */}
-      <div className="relative w-full h-[400px] overflow-hidden rounded-lg shadow-md mb-8">
+      {/* Sliding Banner */}
+      <div className="relative w-full h-[400px] bg-black flex items-center justify-center overflow-hidden rounded-lg shadow-md mb-8">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="flex transition-transform duration-700 ease-in-out h-full"
           style={{
             transform: `translateX(-${currentSlide * 100}%)`,
             width: `${100 * topSuggestions.length}%`,
@@ -134,13 +115,13 @@ function HomePage({ onLogout }) {
           {topSuggestions.map((slide) => (
             <div
               key={slide.id}
-              className="w-full flex-shrink-0"
+              className="w-full h-full flex-shrink-0 flex items-center justify-center"
               style={{ width: "100%" }}
             >
               <img
                 src={slide.imgSrc}
                 alt={slide.alt}
-                className="w-full h-full object-contain bg-black"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
           ))}
